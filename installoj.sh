@@ -16,19 +16,24 @@ sudo service mysql start
 
 #Fetch source code
 git clone https://github.com/BLumia/BLumiaOJ.git --depth=1
-git clone https://github.com/zhblue/hustoj.git --depth=1
+git clone https://github.com/BLumia/HUSTOJ-Core.git --depth=1
+git clone https://github.com/BLumia/BLumiaOJ-Installation-Helper.git --depth=1
+#Maybe you wanna using a mirror?
+#git clone https://git.oschina.net/blumia/BLumiaOJ.git --depth=1
+#git clone https://git.oschina.net/blumia/HUSTOJ-Core.git --depth=1
+#git clone https://git.oschina.net/blumia/BLumiaOJ-Installation-Helper.git --depth=1
 
 #Judger account
 sudo useradd -m -u 1536 $JUDGER_USER
 
 #Compile Judger
-sudo ./hustoj/beta/core/make.sh
+sudo ./HUSTOJ-Core/make.sh
 
 #Running database sql and copy www data
-sudo cp -r BLumiaOJ/webframe/ $WWW_PATH/OnlineJudge/
+sudo cp -r BLumiaOJ/ $WWW_PATH/OnlineJudge/
 sudo chmod -R 771 $WWW_PATH/OnlineJudge/
 sudo chown -R $HTTPD_USER $WWW_PATH/OnlineJudge/
-sudo mysql -h localhost -u$DB_USER -p$DB_PASSWORD < BLumiaOJ/utils/sql_runner/db.sql
+sudo mysql -h localhost -u$DB_USER -p$DB_PASSWORD < BLumiaOJ-Installation-Helper/sql_runner/db.sql
 
 #Creating folder for Judger
 sudo mkdir /home/$JUDEGR_USER/etc
@@ -40,7 +45,7 @@ sudo mkdir /home/$JUDEGR_USER/run2
 sudo mkdir /home/$JUDEGR_USER/run3
 
 #Copying data for judger
-cd hustoj/beta/install/
+cd BLumiaOJ-Installation-Helper/install/
 sudo cp java0.policy judge.conf /home/$JUDEGR_USER/etc
 
 #Ownership with judger and httpd user
