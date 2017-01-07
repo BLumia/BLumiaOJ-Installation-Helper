@@ -1,7 +1,7 @@
 SET NAMES utf8; 
 
-CREATE DATABASE IF NOT EXISTS OnlineJudge;
-USE OnlineJudge;
+CREATE DATABASE IF NOT EXISTS judge;
+USE judge;
 
 CREATE TABLE  `compileinfo` (
   `solution_id` int(11) NOT NULL DEFAULT '0',

@@ -44,6 +44,11 @@ sudo mkdir /home/$JUDEGR_USER/run1
 sudo mkdir /home/$JUDEGR_USER/run2
 sudo mkdir /home/$JUDEGR_USER/run3
 
+#A+B Problem data
+sudo mkdir /home/$JUDEGR_USER/data/1000
+sudo echo "61 4" > /home/$JUDEGR_USER/data/1000/sample.in
+sudo echo "65" > /home/$JUDEGR_USER/data/1000/sample.out
+
 #Copying data for judger
 cd BLumiaOJ-Installation-Helper/install/
 sudo cp java0.policy judge.conf /home/$JUDEGR_USER/etc
