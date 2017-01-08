@@ -9,7 +9,9 @@ DB_USER=root
 DB_PASSWORD=root
 
 #Install dept package
-sudo apt-get install flex g++ libmysql++-dev php5 apache2 mysql-server php5-mysql php5-gd php5-cli mono-gmcs git make
+echo "mysql-server mysql-server/root_password password ${DB_PASSWORD}" | sudo debconf-set-selections 
+echo "mysql-server mysql-server/root_password_again password ${DB_PASSWORD}" | sudo debconf-set-selections 
+sudo apt-get -y install flex g++ libmysql++-dev php5 apache2 mysql-server php5-mysql php5-gd php5-cli mono-gmcs git make
 
 #Start MySQL service
 sudo service mysql start

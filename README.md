@@ -1,2 +1,7 @@
-##注意！
-目前不能正常工作，bash是之前针对cleanup前的repo结构写的，待改。
+# BLumiaOJ Installation Helper
+
+Helper scripts for install BLumiaOJ.
+
+## License
+
+Feel free to use these scripts. Those scripts are in [Public Domain](https://stpeter.im/writings/essays/publicdomain.html) if there is not an additional license inside a script.
