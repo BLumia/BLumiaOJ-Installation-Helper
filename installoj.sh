@@ -30,7 +30,7 @@ sudo useradd -m -u 1536 $JUDGER_USER
 
 #Compile Judger
 cd HUSTOJ-Core/
-sudo bash ./HUSTOJ-Core/make.sh
+sudo bash make.sh
 cd ../
 
 #Running database sql and copy www data
