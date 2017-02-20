@@ -29,7 +29,9 @@ git clone https://github.com/BLumia/BLumiaOJ-Installation-Helper.git --depth=1
 sudo useradd -m -u 1536 $JUDGER_USER
 
 #Compile Judger
-sudo ./HUSTOJ-Core/make.sh
+cd HUSTOJ-Core/
+sudo bash ./HUSTOJ-Core/make.sh
+cd ../
 
 #Running database sql and copy www data
 sudo cp -r BLumiaOJ/ $WWW_PATH/OnlineJudge/
@@ -38,28 +40,28 @@ sudo chown -R $HTTPD_USER $WWW_PATH/OnlineJudge/
 sudo mysql -h localhost -u$DB_USER -p$DB_PASSWORD < BLumiaOJ-Installation-Helper/sql_runner/db.sql
 
 #Creating folder for Judger
-sudo mkdir /home/$JUDEGR_USER/etc
-sudo mkdir /home/$JUDEGR_USER/data
-sudo mkdir /home/$JUDEGR_USER/log
-sudo mkdir /home/$JUDEGR_USER/run0
-sudo mkdir /home/$JUDEGR_USER/run1
-sudo mkdir /home/$JUDEGR_USER/run2
-sudo mkdir /home/$JUDEGR_USER/run3
+sudo mkdir /home/$JUDGER_USER/etc
+sudo mkdir /home/$JUDGER_USER/data
+sudo mkdir /home/$JUDGER_USER/log
+sudo mkdir /home/$JUDGER_USER/run0
+sudo mkdir /home/$JUDGER_USER/run1
+sudo mkdir /home/$JUDGER_USER/run2
+sudo mkdir /home/$JUDGER_USER/run3
 
 #A+B Problem data
-sudo mkdir /home/$JUDEGR_USER/data/1000
-sudo echo "61 4" > /home/$JUDEGR_USER/data/1000/sample.in
-sudo echo "65" > /home/$JUDEGR_USER/data/1000/sample.out
+sudo mkdir /home/$JUDGER_USER/data/1000
+sudo echo "61 4" > /home/$JUDGER_USER/data/1000/sample.in
+sudo echo "65" > /home/$JUDGER_USER/data/1000/sample.out
 
 #Copying data for judger
 cd BLumiaOJ-Installation-Helper/install/
-sudo cp java0.policy judge.conf /home/$JUDEGR_USER/etc
+sudo cp java0.policy judge.conf /home/$JUDGER_USER/etc
 
 #Ownership with judger and httpd user
-sudo chown -R $JUDEGR_USER /home/$JUDEGR_USER
-sudo chgrp -R $HTTPD_USER /home/$JUDEGR_USER/data
-sudo chgrp -R root /home/$JUDEGR_USER/etc /home/$JUDEGR_USER/run?
-sudo chmod 775 /home/$JUDEGR_USER /home/$JUDEGR_USER/data /home/$JUDEGR_USER/etc /home/$JUDEGR_USER/run?
+sudo chown -R $JUDGER_USER /home/$JUDGER_USER
+sudo chgrp -R $HTTPD_USER /home/$JUDGER_USER/data
+sudo chgrp -R root /home/$JUDGER_USER/etc /home/$JUDGER_USER/run?
+sudo chmod 775 /home/$JUDGER_USER /home/$JUDGER_USER/data /home/$JUDGER_USER/etc /home/$JUDGER_USER/run?
 
 #Make judge daemon run at boot up
 sudo cp judged /etc/init.d/judged
