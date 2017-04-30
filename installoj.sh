@@ -2,6 +2,8 @@
 #OJ Install Script for Debian 8
 
 #Configure variables
+#Warning: If you want to change the Judger username, change the hustoj-core code before build.
+#         You'd better don't change the judger username imo.
 WWW_PATH=/var/www/html/
 JUDGER_USER=judge
 HTTPD_USER=www-data
