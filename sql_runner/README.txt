@@ -3,7 +3,9 @@
 如您的hustoj版本较低，且需要使用私有比赛密码限制功能请先执行
 ALTER TABLE `contest` ADD `password` CHAR( 16 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL 
 
-如需要使用视频库附加组件请执行videopage.sql
+如需要使用视频库附加组件请执行 videopage.sql
+如需要使用讨论版增强组件请执行 forum_notification.sql
+如需要使用问题标签功能请执行 problemtagsystem.sql
 
 如果需要使用VirtualJudge请先执行
 CREATE TABLE  `VJ_Solution` (
