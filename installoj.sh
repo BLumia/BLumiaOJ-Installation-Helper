@@ -23,9 +23,9 @@ git clone https://github.com/BLumia/BLumiaOJ.git --depth=1
 git clone https://github.com/BLumia/HUSTOJ-Core.git --depth=1
 git clone https://github.com/BLumia/BLumiaOJ-Installation-Helper.git --depth=1
 #Maybe you wanna using a mirror?
-#git clone https://git.oschina.net/blumia/BLumiaOJ.git --depth=1
-#git clone https://git.oschina.net/blumia/HUSTOJ-Core.git --depth=1
-#git clone https://git.oschina.net/blumia/BLumiaOJ-Installation-Helper.git --depth=1
+#git clone https://gitee.com/blumia/BLumiaOJ.git --depth=1
+#git clone https://gitee.com/blumia/HUSTOJ-Core.git --depth=1
+#git clone https://gitee.com/blumia/BLumiaOJ-Installation-Helper.git --depth=1
 
 #Judger account
 sudo useradd -m -u 1536 ${JUDGER_USER}
