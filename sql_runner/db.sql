@@ -3,14 +3,14 @@ SET NAMES utf8;
 CREATE DATABASE IF NOT EXISTS judge;
 USE judge;
 
-CREATE TABLE  `compileinfo` (
+CREATE TABLE  IF NOT EXISTS `compileinfo` (
   `solution_id` int(11) NOT NULL DEFAULT '0',
   `error` text,
   PRIMARY KEY (`solution_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE  `contest` (
+CREATE TABLE IF NOT EXISTS `contest` (
   `contest_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `start_time` datetime DEFAULT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE  `contest` (
   PRIMARY KEY (`contest_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `contest_problem` (
+CREATE TABLE IF NOT EXISTS `contest_problem` (
   `problem_id` int(11) NOT NULL DEFAULT '0',
   `contest_id` int(11) DEFAULT NULL,
   `title` char(200) NOT NULL DEFAULT '',
@@ -31,14 +31,14 @@ CREATE TABLE  `contest_problem` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE  `loginlog` (
+CREATE TABLE IF NOT EXISTS `loginlog` (
   `user_id` varchar(20) NOT NULL DEFAULT '',
   `password` varchar(40) DEFAULT NULL,
   `ip` varchar(100) DEFAULT NULL,
   `time` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `mail` (
+CREATE TABLE IF NOT EXISTS `mail` (
   `mail_id` int(11) NOT NULL AUTO_INCREMENT,
   `to_user` varchar(20) NOT NULL DEFAULT '',
   `from_user` varchar(20) NOT NULL DEFAULT '',
@@ -52,25 +52,25 @@ CREATE TABLE  `mail` (
   KEY `uid` (`to_user`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1013 DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `news` (
+CREATE TABLE IF NOT EXISTS `news` (
   `news_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(20) NOT NULL DEFAULT '',
   `title` varchar(200) NOT NULL DEFAULT '',
   `content` text NOT NULL,
-  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `time` datetime NOT NULL DEFAULT '1970-01-01 00:00:01',
   `importance` tinyint(4) NOT NULL DEFAULT '0',
   `defunct` char(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY (`news_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1004 DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE  `privilege` (
+CREATE TABLE IF NOT EXISTS `privilege` (
   `user_id` char(20) NOT NULL DEFAULT '',
   `rightstr` char(30) NOT NULL DEFAULT '',
   `defunct` char(1) NOT NULL DEFAULT 'N'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `problem` (
+CREATE TABLE IF NOT EXISTS `problem` (
   `problem_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL DEFAULT '',
   `description` text,
@@ -91,10 +91,10 @@ CREATE TABLE  `problem` (
   PRIMARY KEY (`problem_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `reply` (
+CREATE TABLE IF NOT EXISTS `reply` (
   `rid` int(11) NOT NULL AUTO_INCREMENT,
   `author_id` varchar(20) NOT NULL,
-  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `time` datetime NOT NULL DEFAULT '1970-01-01 00:00:01',
   `content` text NOT NULL,
   `topic_id` int(11) NOT NULL,
   `status` int(2) NOT NULL DEFAULT '0',
@@ -104,7 +104,7 @@ CREATE TABLE  `reply` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE  `sim` (
+CREATE TABLE IF NOT EXISTS `sim` (
   `s_id` int(11) NOT NULL,
   `sim_s_id` int(11) DEFAULT NULL,
   `sim` int(11) DEFAULT NULL,
@@ -112,13 +112,13 @@ CREATE TABLE  `sim` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE  `solution` (
+CREATE TABLE IF NOT EXISTS `solution` (
   `solution_id` int(11) NOT NULL AUTO_INCREMENT,
   `problem_id` int(11) NOT NULL DEFAULT '0',
   `user_id` char(20) NOT NULL,
   `time` int(11) NOT NULL DEFAULT '0',
   `memory` int(11) NOT NULL DEFAULT '0',
-  `in_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `in_date` datetime NOT NULL DEFAULT '1970-01-01 00:00:01',
   `result` smallint(6) NOT NULL DEFAULT '0',
   `language` INT UNSIGNED NOT NULL DEFAULT '0',
   `ip` char(15) NOT NULL,
@@ -135,13 +135,13 @@ CREATE TABLE  `solution` (
   KEY `cid` (`contest_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `source_code` (
+CREATE TABLE IF NOT EXISTS `source_code` (
   `solution_id` int(11) NOT NULL,
   `source` text NOT NULL,
   PRIMARY KEY (`solution_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `topic` (
+CREATE TABLE IF NOT EXISTS `topic` (
   `tid` int(11) NOT NULL AUTO_INCREMENT,
   `title` varbinary(60) NOT NULL,
   `status` int(2) NOT NULL DEFAULT '0',
@@ -153,7 +153,7 @@ CREATE TABLE  `topic` (
   KEY `cid` (`cid`,`pid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `user_id` varchar(20) NOT NULL DEFAULT '',
   `email` varchar(100) DEFAULT NULL,
   `submit` int(11) DEFAULT '0',
@@ -170,7 +170,7 @@ CREATE TABLE  `users` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE `online` (
+CREATE TABLE IF NOT EXISTS `online` (
   `hash` varchar(32) collate utf8_unicode_ci NOT NULL,
   `ip` varchar(20) character set utf8 NOT NULL default '',
   `ua` varchar(255) character set utf8 NOT NULL default '',
@@ -182,13 +182,13 @@ CREATE TABLE `online` (
   UNIQUE KEY `hash` (`hash`)
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE  `runtimeinfo` (
+CREATE TABLE IF NOT EXISTS `runtimeinfo` (
   `solution_id` int(11) NOT NULL DEFAULT '0',
   `error` text,
   PRIMARY KEY (`solution_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `VJ_Solution` (
+CREATE TABLE IF NOT EXISTS `VJ_Solution` (
   `runid` int(11) NOT NULL AUTO_INCREMENT, 		-- runid 1,2,3,4...
   `pid` int(11) NOT NULL DEFAULT '0',			-- problem_id
   `lang` INT UNSIGNED NOT NULL DEFAULT '0',		-- language
